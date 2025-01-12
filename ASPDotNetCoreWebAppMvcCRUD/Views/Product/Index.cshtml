@@ -1,0 +1,52 @@
+﻿@model List<Product>
+@{
+}
+
+<h2>Product List</h2>
+<div class="row">
+    <div class="col">
+        <button class="btn btn-sm btn-primary" asp-controller="Product" asp-action="Create">New Product</button>
+    </div>
+    <div class="col">
+
+    </div>
+</div>
+
+<table class="table"> 
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Brand</td>
+            <td>Category</td>
+            <td>Price</td>
+            <td>Description</td>
+            <td>Image</td>
+            <td>CreatedAt</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach(var product in Model)
+       {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Brand</td>
+                <td>@product.Category</td>
+                <td>@product.Price</td>
+                <td>@product.Description</td>
+                <td><img src="/Products/@product.ImageFileName" alt="@product.ImageFileName" width="100" /></td>
+                <td>@product.CreatedAt.ToString("MM,dd,yyyy")</td>
+                <td style="white-space:nowrap">
+                    <a class="btn btn-sm btn-success" asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id">
+                        Edit
+                    </a>
+                    <a class="btn btn-sm btn-danger" asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+       }
+    </tbody>
+</table>
