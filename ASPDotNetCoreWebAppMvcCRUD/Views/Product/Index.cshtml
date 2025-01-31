@@ -34,7 +34,7 @@
                 <td>@product.Name</td>
                 <td>@product.Brand</td>
                 <td>@product.Category</td>
-                <td>@product.Price</td>
+                <td>@product.Price $</td>
                 <td>@product.Description</td>
                 <td><img src="/Products/@product.ImageFileName" alt="@product.ImageFileName" width="100" /></td>
                 <td>@product.CreatedAt.ToString("MM,dd,yyyy")</td>
@@ -42,7 +42,7 @@
                     <a class="btn btn-sm btn-success" asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id">
                         Edit
                     </a>
-                    <a class="btn btn-sm btn-danger" asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id">
+                    <a class="btn btn-sm btn-danger" asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" onclick="return confirm('Are you sure want to delete ?')">
                         Delete
                     </a>
                 </td>
